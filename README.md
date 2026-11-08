@@ -22,7 +22,10 @@ Download it from the NASA Prognostics Data Repository and place
 5. Evaluate with RMSE, MAE, and the NASA asymmetric score
 
 ## Results
-_To be added._
+Ridge RMSE: 20.82460206085889
+RandomForest RMSE: 17.017320059280777
+
+test RUL clipped at 125 
 
 ## Setup
     python -m venv venv
