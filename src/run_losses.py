@@ -8,6 +8,7 @@ from src.data import ROOT, prepare_data
 from src.losses import mape, msle, nasa_loss, tweedie
 from src.models import LSTMRegressor
 from src.train import nasa_score, predict, rmse, train_model
+from src.train import nasa_score, predict, rmse, set_seed, train_model
 
 LOSSES = {"MSE": nn.MSELoss(), "MAE": nn.L1Loss(), "MSLE": msle,
           "MAPE": mape, "Tweedie": tweedie, "NASA": nasa_loss}
@@ -33,6 +34,7 @@ def main():
             if (name, seed) in finished:
                 continue
             t0 = time.time()
+            set_seed(seed) 
             model = LSTMRegressor(n_features=len(d["feats"]),
                                   out_bias=float(d["y_tr"].mean()))
             model, _ = train_model(model, d["X_tr"], d["y_tr"], d["X_val"], d["y_val"],
